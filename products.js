@@ -37,14 +37,13 @@ view details </button>
 
 }
 
-
 async function loadProduct(page = 1){
 
  currentPage = page
 
 let skip = (page - 1) * productPerPage
 
-let data = await getProducts ( productPerPage, skip)
+let data = await getProducts (productPerPage, skip)
 
 displayProducts(data.product)
 createpages(data.total)

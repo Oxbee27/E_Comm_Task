@@ -13,7 +13,7 @@ return await response.json()
 
 } 
 
-async function getfproduct(id){
+async function getproduct(id){
 
 const response = await fetch (`${demo_url}/${id}`);
 
@@ -39,3 +39,13 @@ throw new error("failed to load categories ")
 
 }
 
+async function getSearch(query){
+ const response = await fetch(`${demo_url}/search?q=${query}`)
+
+ if(!response.ok){
+    throw new error ("failed to load query")
+
+ }
+
+ return await response.json()
+}
