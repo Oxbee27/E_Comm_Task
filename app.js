@@ -27,8 +27,8 @@ return await response.json()
 
 }
 
-async function getCategory( category ){
- const response = await fetch(`${demo_url}/${category}`);
+async function getCategory(){
+ const response = await fetch(`${demo_url}/${allproducts}`);
 
  if(!response.ok){
 throw new error("failed to load categories ")
@@ -47,5 +47,17 @@ async function getSearch(query){
 
  }
 
+ return await response.json()
+}
+
+async function getProductsByCAt(category){
+
+const response = await fetch(`${demo_url}/category/${category}`)
+
+if(!response.ok){
+
+throw new Error ("failed to load")
+
+}
  return await response.json()
 }
