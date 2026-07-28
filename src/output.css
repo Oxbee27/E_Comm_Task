@@ -170,6 +170,9 @@
   }
 }
 @layer utilities {
+  .ml-4 {
+    margin-left: calc(var(--spacing) * 4);
+  }
   .table {
     display: table;
   }
@@ -178,6 +181,9 @@
   }
   .resize {
     resize: both;
+  }
+  .rounded {
+    border-radius: 0.25rem;
   }
   .border {
     border-style: var(--tw-border-style);
@@ -188,6 +194,9 @@
   }
   .bg-red-600 {
     background-color: var(--color-red-600);
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
@@ -206,6 +215,9 @@
   }
   .text-white {
     color: var(--color-white);
+  }
+  .italic {
+    font-style: italic;
   }
   .underline {
     text-decoration-line: underline;
