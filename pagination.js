@@ -1,17 +1,14 @@
 const pagination = document.getElementById("pagination");
 
-let pageNUm = 10
-let currentPage = 1
+function createPages(total) {
 
-function createpageNum(total){
+    pagination.innerHTML = "";
 
-pagination.innerHTML = "";
+    const totalPages = Math.ceil(total / pageNum);
 
-let totalpages = Math.ceil(total/pageNUm)
+    for (let page = 1; page <= totalPages; page++) {
 
-for( let page = 1; page <= totalpages; page++){
-
-const button = document.createElement("button");
+        const button = document.createElement("button");
 
         button.textContent = page;
 
@@ -25,6 +22,4 @@ const button = document.createElement("button");
 
         pagination.appendChild(button);
     }
-
-
 }

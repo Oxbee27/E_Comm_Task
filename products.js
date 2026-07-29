@@ -1,56 +1,58 @@
-const productCards = document.getElementById("pr_details");
-let currentCard = []
+console.log(window.location.pathname);
 
-async function displayProducts(product){
+const productCards = document.getElementById("product");
 
-currentCard = product
+console.log(productCards);
 
-productCards.innerHTML = "",
+let currentCard = [];
+const pageNum = 10;
+let currentPage = 1;
+function displayProducts(products) {
+  currentCard = products;
 
-pr_detail.forEach(product => {
+  productCards.innerHTML = "";
 
-productCards.innerHTML = `
+  currentCard.forEach((product) => {
+    productCards.innerHTML += `
+            <div class="card">
 
-<div class="card">
+                <img src="${product.thumbnail}" alt="${product.title}">
 
-<img src="${product.thubmnail}" alt="${product.title}"
+                <h2>${product.title}</h2>
 
-<h2>${product.title}</h2>
+                <p class="price">$${product.price}</p>
 
-<p class="price">${product.price}</p>
-<p> ${product.rating}</p>
+                <p>${product.rating}</p>
 
-<button onclick = "viewproduct(${product.id}">
-view details </button>
+                <button onclick="viewProduct(${product.id})">
+                    View Details
+                </button>
 
-
-
-
-
-
-</div>
-
-`
-  
-});
-
-
+            </div>
+        `;
+  });
 }
 
-async function loadProduct(page = 1){
+async function loadProducts(page = 1) {
+  currentPage = page;
 
- currentPage = page
+  let skip = (page - 1) * pageNum;
 
-let skip = (page - 1) * pageNUm
+  try {
+    let data = await getProducts(pageNum, skip);
 
-let data = await getProducts (pageNUm, skip)
+    console.log(data);
+    console.log(data.products);
 
-displayProducts(data.product)
-createpages(data.total)
+    displayProducts(data.products);
 
+    createPages(data.total);
+  } catch (error) {
+    console.error("Product Error:", error);
+  }
 }
 
-function viewproduct(id){
-window.location.href = `product,html?id=${id}`
-
+function viewProduct(id) {
+  window.location.href = `product.html?id=${id}`;
 }
+loadProducts();

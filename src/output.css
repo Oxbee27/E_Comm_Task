@@ -173,6 +173,9 @@
   .ml-4 {
     margin-left: calc(var(--spacing) * 4);
   }
+  .flex {
+    display: flex;
+  }
   .table {
     display: table;
   }

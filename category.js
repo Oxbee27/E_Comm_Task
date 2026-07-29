@@ -1,73 +1,27 @@
-const selectCategory = document.getElementById("allproduct");
+const categorySelect = document.getElementById("allproducts");
 
 
-async function loadCategories(){
+async function loadCategories() {
 
-try{
-const allproduct = await getCategory();
+    try {
 
-allproduct.array.forEach(category => {
+        const categories = await getCategories();
 
-const value = value.slug || category
-const text = value.name || category
+        categories.forEach(category => {
 
+            const option = document.createElement("option");
 
-selectCategory += `
-<option value ="${value}">${text}
+            option.value = category.slug || category;
+            option.textContent = category.name || category;
 
+            categorySelect.appendChild(option);
 
-`
-    
-});
+        });
 
+    } catch(error) {
 
-} catch(error){
-console,log(error)
+        console.error(error);
 
-
-}
-
-
-selectCategory.addEventListener( "update", async function() {
-
-const category = selectCategory.value
-
-
-if(category = ""){
-
-loadProduct(1)
-return
-
-}
-
-try{
-
-const data = await getProductsByCAt(category);
-
-displayProducts(data.products)
-
-pagination.innerHTML = "";
-
-
-} catch (error){
-console.log(error)
-
-
-}
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 }
