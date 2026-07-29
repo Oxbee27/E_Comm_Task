@@ -1,3 +1,4 @@
+
 const demo_url = "https://dummyjson.com/products";
 
 async function getProducts(limit = 10, skip = 0) {
@@ -14,7 +15,9 @@ async function getProducts(limit = 10, skip = 0) {
 
 async function getProduct(id) {
 
-    const response = await fetch(`${demo_url}/${id}` );
+    const response = await fetch(
+        `${demo_url}/${id}`
+    );
 
     if (!response.ok) {
         throw new Error("Failed to load product");
@@ -22,7 +25,6 @@ async function getProduct(id) {
 
     return await response.json();
 }
-
 // Get all categories
 async function getCategories() {
 
@@ -51,17 +53,20 @@ async function getProductsByCategory(category) {
 
     let url;
 
-    if (category === "allproducts") {
-        url = `${demo_url}/products`;
+    if (category === "all" || category === "allproducts") {
+        url = demo_url;
     } else {
-        url = `${demo_url}/products/category/${category}`;
+        url = `${demo_url}/category/${category}`;
     }
+
+    console.log("Fetching:", url);
 
     const response = await fetch(url);
 
     if (!response.ok) {
-        throw new Error("Failed to load products");
+        throw new Error(`Failed to load products (${response.status})`);
     }
 
     return await response.json();
 }
+// button.addEventListener("click", ...);

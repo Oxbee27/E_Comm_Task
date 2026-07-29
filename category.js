@@ -1,27 +1,49 @@
 const categorySelect = document.getElementById("allproducts");
 
-
 async function loadCategories() {
+    try {
+        const categories = await getCategories();
+
+        // Clear existing options except "All Products"
+        categorySelect.innerHTML = `<option value="all">All Products</option>`;
+
+        categories.forEach(category => {
+            const option = document.createElement("option");
+
+            if (typeof category === "string") {
+                option.value = category;
+                option.textContent = category;
+            } else {
+                option.value = category.slug;
+                option.textContent = category.name;
+            }
+
+            categorySelect.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error("Category Error:", error);
+    }
+}
+
+categorySelect.addEventListener("change", async (e) => {
+
+    const category = e.target.value;
 
     try {
 
-        const categories = await getCategories();
+        let data;
 
-        categories.forEach(category => {
+        if (category === "all") {
+            data = await getProducts(100, 0);
+        } else {
+            data = await getProductsByCategory(category);
+        }
 
-            const option = document.createElement("option");
+        displayProducts(data.products);
 
-            option.value = category.slug || category;
-            option.textContent = category.name || category;
-
-            categorySelect.appendChild(option);
-
-        });
-
-    } catch(error) {
-
+    } catch (error) {
         console.error(error);
-
     }
 
-}
+});
