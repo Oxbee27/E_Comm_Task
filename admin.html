@@ -1,0 +1,92 @@
+<main class="admin-container">
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+
+    <!-- <img src="img/the-logo-for-the-company-is-colorful-and-has-a-wave-shape-free-png.webp" alt="ShopEase Logo"> -->
+
+</a>
+
+
+    <nav class="nav-links">
+
+
+        <a href="index.html">
+            Home
+        </a>
+
+
+        <a href="admin.html">
+            Admin
+        </a>
+
+
+    </nav>
+
+
+</header>
+
+    <h2>Manage Products</h2>
+
+
+    <!-- Add Product Form -->
+
+    <h3>Add Product</h3>
+
+    <form id="addProductForm">
+
+<input id="title" placeholder="Product title" required>
+
+
+        <input id="price" type="number" placeholder="Price" required>
+
+
+        <input id="stock" type="number" placeholder="Stock" required>
+
+
+        <button type="submit"> Add Product </button>
+
+    </form>
+    <hr>
+
+ <button id="loadProducts"> Load Products </button>
+
+    <table id="adminTable"> 
+    
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Title</th>
+
+                <th>Price</th>
+
+                <th>Stock</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+
+        <td> </td>
+
+
+    </table>
+
+
+
+    <h2>
+        Activity Log
+    </h2>
+
+
+    <ul id="activityLog">
+
+    </ul>
+
+<script src="app.js"></script>
+<script src="showState.js"></script>
+<script src="admin.js"></script>
+
+</main>

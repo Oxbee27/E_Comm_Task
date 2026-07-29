@@ -41,9 +41,9 @@ async function loadProduct(page = 1){
 
  currentPage = page
 
-let skip = (page - 1) * productPerPage
+let skip = (page - 1) * pageNUm
 
-let data = await getProducts (productPerPage, skip)
+let data = await getProducts (pageNUm, skip)
 
 displayProducts(data.product)
 createpages(data.total)

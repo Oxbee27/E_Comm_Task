@@ -28,6 +28,45 @@ console,log(error)
 }
 
 
+selectCategory.addEventListener( "update", async function() {
+
+const category = selectCategory.value
+
+
+if(category = ""){
+
+loadProduct(1)
+return
+
+}
+
+try{
+
+const data = await getProductsByCAt(category);
+
+displayProducts(data.products)
+
+pagination.innerHTML = "";
+
+
+} catch (error){
+console.log(error)
+
+
+}
+
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 
