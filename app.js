@@ -133,3 +133,4 @@ async function deleteProduct(id) {
 
     return await response.json();
 }
+

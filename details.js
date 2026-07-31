@@ -3,21 +3,14 @@ const detailsContainer = document.getElementById("pr_details");
 async function loadProductDetails() {
 
     const params = new URLSearchParams(window.location.search);
-
     const id = params.get("id");
-
-    if (!id) {
-        detailsContainer.innerHTML = `
-            <h2>No product selected</h2>
-        `;
-        return;
-    }
 
     try {
 
         const product = await getProduct(id);
 
         detailsContainer.innerHTML = `
+
             <div class="details-card">
 
                 <img src="${product.thumbnail}" 
@@ -38,15 +31,15 @@ async function loadProductDetails() {
                 </button>
 
             </div>
+
         `;
 
     } catch(error) {
 
         console.error(error);
 
-        detailsContainer.innerHTML = `
-            <p>Failed to load product details</p>
-        `;
+        detailsContainer.innerHTML =
+        "<p>Unable to load product details</p>";
     }
 }
 

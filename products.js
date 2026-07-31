@@ -95,6 +95,8 @@ function addToCart(id) {
 
 // View single product
 function viewProduct(id) {
+    console.log("Product ID:", id);
+
     window.location.href = `product.html?id=${id}`;
 }
 
