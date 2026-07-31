@@ -15,7 +15,10 @@ async function getProducts(limit = 10, skip = 0) {
 
 // Get one product
 async function getProduct(id) {
-    const response = await fetch(`${demo_url}/${id}`);
+
+    const response = await fetch(
+        `https://dummyjson.com/products/${id}`
+    );
 
     if (!response.ok) {
         throw new Error("Failed to load product");
