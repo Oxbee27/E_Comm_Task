@@ -1,6 +1,3 @@
-/* =========================
-   RESET & GLOBAL
-========================= */
 
 * {
     margin:0;
@@ -250,9 +247,6 @@ body {
 }
 
 
-
-/* MOBILE */
-
 @media(max-width:768px){
 
 
@@ -319,12 +313,6 @@ body {
 }
 
 
-
-/* =========================
- MOBILE HERO
-========================= */
-
-
 @media(max-width:768px){
 
 
@@ -333,8 +321,6 @@ body {
     flex-direction:column;
 
 }
-
-
 
 .navbar h2 {
 
@@ -350,15 +336,11 @@ body {
 
 }
 
-
-
 .navbar_links {
 
     gap:15px;
 
 }
-
-
 
 .hero {
 
@@ -370,14 +352,11 @@ body {
 
 }
 
-
-
 .hero h1 {
 
     font-size:28px;
 
 }
-
 
 
 .hero p {
@@ -390,10 +369,6 @@ body {
 
 
 }
-
-/* =========================
- PRODUCT GRID
-========================= */
 
 
 .product-grid {
@@ -409,12 +384,6 @@ body {
     padding:20px;
 
 }
-
-
-
-/* =========================
- PRODUCT CARD
-========================= */
 
 
 .card {
@@ -433,8 +402,6 @@ body {
 
 }
 
-
-
 .card:hover {
 
     border-color:#2563eb;
@@ -442,10 +409,6 @@ body {
     box-shadow:0 8px 25px rgba(0,0,0,.08);
 
 }
-
-
-
-/* IMAGE */
 
 
 .card img {
@@ -461,11 +424,6 @@ body {
     background:#f8fafc;
 
 }
-
-
-
-/* TITLE */
-
 
 .card h3 {
 
@@ -485,11 +443,6 @@ body {
 
 }
 
-
-
-/* DESCRIPTION */
-
-
 .card p {
 
     font-size:12px;
@@ -499,10 +452,6 @@ body {
     line-height:18px;
 
 }
-
-
-
-/* PRICE */
 
 
 .price {
@@ -516,13 +465,6 @@ body {
     color:#059669;
 
 }
-
-
-
-/* =========================
- BUTTON AREA
-========================= */
-
 
 .buttons {
 
@@ -557,10 +499,6 @@ body {
 }
 
 
-
-/* ADD TO CART */
-
-
 .cart-btn {
 
     background:#f97316;
@@ -576,11 +514,6 @@ body {
     background:#ea580c;
 
 }
-
-
-
-/* VIEW */
-
 
 .view-btn {
 
@@ -651,8 +584,6 @@ body {
 
 }
 
-
-
 #pagination button.active {
 
     background:#2563eb;
@@ -660,12 +591,6 @@ body {
     color:white;
 
 }
-
-
-
-/* =========================
- PRODUCT DETAILS
-========================= */
 
 
 .details {
@@ -699,13 +624,6 @@ body {
     border-radius:12px;
 
 }
-
-
-
-/* =========================
- MOBILE
-========================= */
-
 
 @media(max-width:768px){
 
