@@ -3,38 +3,38 @@ const activityLog = document.getElementById("activityLog");
 const loadButton = document.getElementById("loadProducts");
 const addForm = document.getElementById("addProductForm");
 
-// Check elements exist
 console.log("Table Body:", tableBody);
 console.log("Load Button:", loadButton);
 
-// Attach event listener
 loadButton.addEventListener("click", loadAdminProducts);
 
-// Load products
 async function loadAdminProducts() {
     try {
         console.log("Loading products...");
 
-        const data = await getProducts(30, 0);
+        const savedProducts = getShadowProducts();
 
-        console.log("API Response:", data);
+        // Only fetch from API the first time
+        if (savedProducts.length === 0) {
 
-        if (!data || !Array.isArray(data.products)) {
-            throw new Error("No products returned from API.");
+            const data = await getProducts(30, 0);
+
+            if (!data || !Array.isArray(data.products)) {
+                throw new Error("No products returned from API.");
+            }
+
+            setShadowProducts(data.products);
         }
-
-        setShadowProducts(data.products);
 
         displayTable();
 
-        addLog("Loaded products from API");
+        addLog("Loaded products");
+
     } catch (error) {
         console.error(error);
         addLog("Failed to load products");
     }
 }
-
-// Display products in table
 function displayTable() {
     tableBody.innerHTML = "";
 
@@ -69,8 +69,7 @@ function displayTable() {
     });
 }
 
-// Quick edit stock
-async function quickEdit(id) {
+async function editProduct(id) {
     const products = getShadowProducts();
 
     const product = products.find(p => p.id === id);
@@ -79,29 +78,51 @@ async function quickEdit(id) {
 
     const backup = [...products];
 
-    const newStock = Number(prompt("New stock:", product.stock));
+    const newTitle = prompt("Enter new title:", product.title);
+    if (newTitle === null) return;
 
+    const newPrice = Number(prompt("Enter new price:", product.price));
+    if (isNaN(newPrice)) {
+        alert("Invalid price");
+        return;
+    }
+
+    const newStock = Number(prompt("Enter new stock:", product.stock));
+    if (isNaN(newStock)) {
+        alert("Invalid stock");
+        return;
+    }
+
+    // Update the local copy immediately
     updateShadow(id, {
+        title: newTitle,
+        price: newPrice,
         stock: newStock
     });
 
     displayTable();
 
-    addLog(`Quick edited product ${id}`);
+    addLog(`Edited product ${id}`);
 
     try {
-        await patchProduct(id, {
+        await updateProduct(id, {
+            title: newTitle,
+            price: newPrice,
             stock: newStock
         });
     } catch (error) {
         restoreShadow(backup);
         displayTable();
-        addLog(`PATCH failed - rollback ${id}`);
+        addLog(`Update failed - rollback ${id}`);
     }
 }
-
 // Delete product
 async function removeProduct(id) {
+
+    const confirmDelete = confirm("Delete this product?");
+
+    if (!confirmDelete) return;
+
     const backup = [...getShadowProducts()];
 
     removeFromShadow(id);
@@ -112,14 +133,49 @@ async function removeProduct(id) {
 
     try {
         await deleteProduct(id);
+
     } catch (error) {
+
         restoreShadow(backup);
+
         displayTable();
+
         addLog(`Delete failed - rollback ${id}`);
     }
 }
+// Add product
+addForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-// Activity log
+    const title = document.getElementById("productTitle").value;
+    const price = Number(document.getElementById("productPrice").value);
+    const stock = Number(document.getElementById("productStock").value);
+
+    const newProduct = {
+        title,
+        price,
+        stock
+    };
+
+    try {
+        const createdProduct = await createProduct(newProduct);
+
+        // Add to local shadow data
+        addToShadow(createdProduct);
+
+        // Refresh table
+        displayTable();
+
+        addLog(`Added product ${createdProduct.id}`);
+
+        addForm.reset();
+
+    } catch (error) {
+        console.error(error);
+        addLog("Failed to add product");
+    }
+});
+
 function addLog(message) {
     if (!activityLog) return;
 

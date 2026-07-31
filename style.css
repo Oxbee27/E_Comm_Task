@@ -1,12 +1,11 @@
-/* =========================
-   GLOBAL RESET
-========================= */
 
-/* * {
+
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-} */
+}
 
 
 body {
@@ -15,20 +14,14 @@ body {
 
     background-color: #f4f4f4;
 
-    color: #333;
+    color: gray;
 
     max-width: 1200px;
 
     margin: 0 auto;
 
 }
-
-
-
-/* =========================
-   NAVBAR
-========================= */
-
+/* navbar section */
 
 .navbar {
 
@@ -55,9 +48,9 @@ body {
 
     height: 10px;
 
-    /* object-fit: contain; */
+    object-fit: contain; 
 
-    /* display: block; */
+    display: block;
 
 }
 
@@ -104,10 +97,7 @@ body {
 }
 
 
-
-/* =========================
-   HERO SECTION
-========================= */
+/* hero section */
 
 
 .hero {
@@ -173,20 +163,9 @@ body {
 
     box-shadow:
 
-    0 3px 10px rgba(0,0,0,0.1);
-
-    transition: transform 0.3s ease;
+    
 
 }
-
-
-/* 
-.card:hover {
-
-    transform: translateY(-5px);
-
-} */
-
 
 .card img {
 
@@ -204,8 +183,6 @@ body {
 
 }
 
-
-
 .card h2 {
 
     font-size: 18px;
@@ -213,8 +190,6 @@ body {
     margin: 15px 0 10px;
 
 }
-
-
 
 .card p {
 
@@ -268,9 +243,9 @@ body {
 .pagination {
 
     display: flex;
-
-    justify-content: center;
-
+    margin-top: 20px;
+    justify-items: center;
+margin-left: 50px;
     gap: 10px;
 
     padding: 30px;
@@ -286,7 +261,7 @@ body {
 
     border-radius: 5px;
 
-    background: blue;
+    background: gray;
 
     color: white;
 
@@ -297,7 +272,7 @@ body {
 
 #pagination button:hover {
 
-    background: darkblue;
+    background: gainsboro;
 
 }
 
@@ -386,7 +361,7 @@ body {
 
     text-align: center;
 
-    border: 1px solid #ddd;
+    border: 1px solid blue;
 
 }
 
@@ -399,7 +374,7 @@ form input {
 
     border-radius: 5px;
 
-    border: 1px solid #ccc;
+    border: 1px solid red;
 
 }
 
@@ -422,7 +397,7 @@ form button {
 }
 
 
-   /* MOBILE RESPONSIVE */
+ /* responsiveness */
 
 
 @media(max-width:768px) {

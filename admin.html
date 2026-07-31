@@ -29,16 +29,17 @@
 
     <form id="addProductForm">
 
-<input id="title" placeholder="Product title" required>
+    <input id="productTitle" placeholder="Product title">
 
+    <input id="productPrice" type="number" placeholder="Price">
 
-        <input id="price" type="number" placeholder="Price" required>
+    <input id="productStock" type="number" placeholder="Stock">
 
-        <input id="stock" type="number" placeholder="Stock" required>
+    <button type="submit">
+        Add Product
+    </button>
 
-        <button type="submit"> Add Product </button>
-
-    </form>
+</form>
     <hr>
 
  <button id="loadProducts">Load Products</button>
@@ -59,6 +60,7 @@
 </table>
 
 <ul id="activityLog"></ul>
+
 <script src="app.js"></script>
 <script src="showState.js"></script>
 <script src="admin.js"></script>

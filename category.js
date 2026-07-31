@@ -4,7 +4,7 @@ async function loadCategories() {
     try {
         const categories = await getCategories();
 
-        // Clear existing options except "All Products"
+        
         categorySelect.innerHTML = `<option value="all">All Products</option>`;
 
         categories.forEach(category => {

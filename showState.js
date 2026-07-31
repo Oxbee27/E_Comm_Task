@@ -1,79 +1,61 @@
 let shadowProducts = [];
 
+// Load saved products from browser storage
+function loadShadowProducts() {
+    const saved = localStorage.getItem("products");
 
-// Save products locally
+    if (saved) {
+        shadowProducts = JSON.parse(saved);
+    }
+}
 
-function setShadowProducts(products){
+function saveShadowProducts() {
+    localStorage.setItem(
+        "products",
+        JSON.stringify(shadowProducts)
+    );
+}
 
+function setShadowProducts(products) {
     shadowProducts = [...products];
-
+    saveShadowProducts();
 }
 
-
-
-// Get current local products
-
-function getShadowProducts(){
-
+function getShadowProducts() {
     return shadowProducts;
-
 }
 
-
-
-// Add product locally
-
-function addToShadow(product){
-
-    shadowProducts.unshift(product);
-
+function addToShadow(product) {
+    shadowProducts.push(product);
+    saveShadowProducts();
 }
 
-
-
-// Update product locally
-
-function updateShadow(id, updatedData){
-
-    const index =
-    shadowProducts.findIndex(
+function updateShadow(id, updatedData) {
+    const index = shadowProducts.findIndex(
         product => product.id === id
     );
 
-
-    if(index !== -1){
-
+    if (index !== -1) {
         shadowProducts[index] = {
-
             ...shadowProducts[index],
-
             ...updatedData
-
         };
 
+        saveShadowProducts();
     }
-
 }
 
-
-
-// Remove product locally
-
-function removeFromShadow(id){
-
-    shadowProducts =
-    shadowProducts.filter(
+function removeFromShadow(id) {
+    shadowProducts = shadowProducts.filter(
         product => product.id !== id
     );
 
+    saveShadowProducts();
 }
 
-
-
-// Restore state after failure
-
-function restoreShadow(products){
-
+function restoreShadow(products) {
     shadowProducts = [...products];
-
+    saveShadowProducts();
 }
+
+loadShadowProducts();
