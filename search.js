@@ -1,8 +1,8 @@
-const searchproduct = document.getElementById("search");
+const searchinput = document.getElementById("search");
 
-searchproduct.addEventListener("input", async function(){
+searchinput.addEventListener("keyup", async function(){
 
-    const query = searchproduct.Value.trim()
+    const query = searchinput.value.trim()
 
     if(query === ""){
         loadProduct(1)
@@ -13,9 +13,9 @@ searchproduct.addEventListener("input", async function(){
     try{
 
 
-const data = await searchproduct(query)
+const data = await getSearch(query)
 
-    displayProducts(data.product)
+    displayProducts(data.products)
 
 pagination.innerHTML ="";
 
