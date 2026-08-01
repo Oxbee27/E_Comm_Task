@@ -723,3 +723,151 @@ body {
 
 
 }
+
+
+main{
+    max-width:1000px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+h2{
+    text-align:center;
+    color:#333;
+    margin-bottom:25px;
+}
+
+h3{
+    color:#555;
+    margin-bottom:15px;
+}
+
+#addProductForm{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin-bottom:25px;
+}
+
+#addProductForm input{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+#addProductForm input:focus{
+    outline:none;
+    border-color:#007bff;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#007bff;
+    color:#fff;
+    font-size:15px;
+    transition:.3s;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+#loadProducts{
+    margin:20px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    background:#fff;
+}
+
+thead{
+    background:#007bff;
+    color:white;
+}
+
+th,
+td{
+    padding:14px;
+    text-align:left;
+    border-bottom:1px solid #ddd;
+}
+
+tbody tr:nth-child(even){
+    background:#f8f9fa;
+}
+
+tbody tr:hover{
+    background:#eef5ff;
+}
+
+td button{
+    margin-right:8px;
+    padding:8px 14px;
+    font-size:14px;
+}
+
+td button:first-child{
+    background:#28a745;
+}
+
+td button:first-child:hover{
+    background:#218838;
+}
+
+td button:last-child{
+    background:#dc3545;
+}
+
+td button:last-child:hover{
+    background:#c82333;
+}
+
+#activityLog{
+    margin-top:30px;
+    list-style:none;
+    background:#fafafa;
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:15px;
+}
+
+#activityLog li{
+    padding:10px;
+    border-bottom:1px solid #eee;
+}
+
+#activityLog li:last-child{
+    border-bottom:none;
+}
+
+hr{
+    margin:30px 0;
+    border:none;
+    border-top:1px solid #ddd;
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:20px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+
+    button{
+        width:100%;
+    }
+}
