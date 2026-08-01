@@ -734,15 +734,19 @@ main{
     box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
 
-h2{
+.admin_title{
     text-align:center;
-    color:#333;
+    color:blue;
     margin-bottom:25px;
+    text-transform:uppercase;
 }
 
-h3{
-    color:#555;
+.add_btn{
+    color:white;
     margin-bottom:15px;
+    text-transform: capitalize;
+    background: #007bff;
+    text-align: center;
 }
 
 #addProductForm{
@@ -846,9 +850,8 @@ td button:last-child:hover{
     border-bottom:1px solid #eee;
 }
 
-#activityLog li:last-child{
-    border-bottom:none;
-}
+
+
 
 hr{
     margin:30px 0;
